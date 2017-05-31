@@ -1,42 +1,3 @@
-<?php
-// Inialize session
-session_start();
-include '../connection/conn.php';
-// Check, if user is already login, then jump to secured page
-if (isset($_SESSION['userid']) && isset($_SESSION['category'])) {
-    switch($_SESSION['category']) {
-
-
-        case 1:
-            header('location:../index.php');//redirect to  page
-            break;
-
-        case 4:
-            header('location:../index.php');//redirect to  page
-            break;
-
-    }
-}else
-{
-
-    header('Location:index.php');
-}
-
-?>
-
-<?php
-//mag show sang information sang user nga nag login
-$userid=$_SESSION['userid'];
-
-$result=mysql_query("SELECT * from users where userid='$userid'")or die(mysql_error);
-$row=mysql_fetch_array($result);
-
-$SirName=$row['sirname'];
-$OtherNames=$row['othernames'];
-$UserName=$row['username'];
-$mobnum=$row['phonenum'];
-
-?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -130,8 +91,8 @@ desired effect
                                 <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    <b style="color: #0c0c0c"><?php echo $UserName;?></b>  logged in
-                                    <small>Welcome <?php echo "".$SirName."&nbsp;".$OtherNames.""?></small>
+                                    <b style="color: #0c0c0c"><?php echo $username;?></b>  logged in
+                                    <small>Welcome <?php echo "".$sirname."&nbsp;".$othernames.""?></small>
                                 </p>
                             </li>
                             <!-- Menu Body
@@ -155,7 +116,7 @@ desired effect
                                     <a href="uprof.php" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="../logout.php?logout" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -238,7 +199,13 @@ desired effect
         <section class="content-header">
             <h1>
                 <!-- add heaher here-->
-                <small> Properties 2016</small>
+                <small> Properties 2016 &nbsp; <a href ="" onclick="myFunction()"><i class="fa fa fa-print"></i></a> &nbsp;<a href ="mailto:infor.samson@gmail.com" ><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+                  <script>
+                    function myFunction() {
+                      window.print();
+                    }
+                  </script>
+                </small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>

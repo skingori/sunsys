@@ -2,32 +2,49 @@
 <?php
 // Inialize session
 session_start();
-include '../connection/conn.php';
-// Check, if user is already login, then jump to secured page
-if (isset($_SESSION['userid']) && isset($_SESSION['category'])) {
-      switch($_SESSION['category']) {
 
-      	case 2:
-      		header('location:../index.php');//redirect to  page
-      		break;
+include '../connection/db.php';
 
-		case 3:
-		  header('location:../index.php');//redirect to  page
-        break;
+$uname=$_SESSION['userid'];
 
-      }
-	  }else
-	  {
+$result1 = mysqli_query($con,"SELECT * FROM users WHERE userid='$uname'");
 
-header('Location:index.php');
+while($res = mysqli_fetch_array($result1))
+{
+    $sirname= $res['sirname'];
+    $othernames= $res['othernames'];
+    $username= $res['username'];
+
 }
 
+if (isset($_SESSION['userid']) && isset($_SESSION['category'])) {
+    switch($_SESSION['category']) {
+
+        case 2:
+            header('Location:../user/index.php');//redirect to  page
+            break;
+        case 1:
+            header('Location:../powner/index.php');//redirect to  page
+            break;
+
+
+    }
+}
+elseif(!isset($_SESSION['userid']) && !isset($_SESSION['category'])) {
+    header('Location:../sessions.php');
+} else
+{
+
+    header('Location:index.php');
+}
+//
 ?>
 <?php
 //mag show sang information sang user nga nag login
 $userid=$_SESSION['userid'];
 
-$result=mysql_query("SELECT * from users where userid='$userid'")or die(mysql_error);
+include("../connection/dbconn.php");
+$result=mysql_query("SELECT * FROM users where userid='$userid'")or die(mysql_error);
 $row=mysql_fetch_array($result);
 
 $SirName=$row['sirname'];

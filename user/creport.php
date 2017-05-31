@@ -1,3 +1,44 @@
+<?php
+// Inialize session
+session_start();
+
+include '../connection/db.php';
+
+$uname=$_SESSION['userid'];
+
+$result1 = mysqli_query($con,"SELECT * FROM users WHERE userid='$uname'");
+
+while($res = mysqli_fetch_array($result1))
+{
+    $sirname= $res['sirname'];
+    $othernames= $res['othernames'];
+    $username= $res['username'];
+    $mobnum= $res['phonenum'];
+
+}
+
+if (isset($_SESSION['userid']) && isset($_SESSION['category'])) {
+    switch($_SESSION['category']) {
+
+        case 4:
+            header('Location:../admin/index.php');//redirect to  page
+            break;
+        case 1:
+            header('Location:../powner/index.php');//redirect to  page
+            break;
+
+
+    }
+}
+elseif(!isset($_SESSION['userid']) && !isset($_SESSION['category'])) {
+    header('Location:../sessions.php');
+} else
+{
+
+    header('Location:index.php');
+}
+//
+?>
 <?php include 'xh.php'?>
 <?php
 /**
@@ -17,13 +58,21 @@ if (isset($_GET['rep'])) {
 
     ?>
 
-    <span class="input-group-btn">
+    <!--<span class="input-group-btn">
         <button type='submit' name='search' id='print' onclick="printData();" class="btn btn-flat btn-default "><i class="fa fa-print"></i></button>&nbsp;
         <button type='submit' name='search' id='print' onclick="printData();" class="btn btn-flat btn-default "><i class="fa fa-file"></i></button>
-        </span>
+      </span>-->
+
+        <small style="color: grey"> ALL APPLICATIONS.<br> P.O BOX 652567 NAIROBI.<br>
+          KENYA.<br>
+          PRINT BY: <?php echo "".$sirname."&nbsp;".$othernames.""; ?> <br>
+          MOBILE: <?php echo "$mobnum"; ?><br>
+          SIGN: ....................................<p>
+        </small>
     <table style="font-size: small" border=0 cellpadding="1" cellspacing="1" id="table1" width="100%" class="table table-hover table-condensed table-bordered table-striped">
 
         <tr>
+
             <td>APARTMENT</td>
             <td>NAME</td>
             <td>CONTACT</td>

@@ -77,7 +77,7 @@
     <font color="#6495ed"></font>
   </div>
   <div class="text-center">
-    <a href="login.php"><b><font color="#006400"> Agree and continue to login</font></a>
+    <a href="index.php"><b><font color="#006400"> Agree and continue to login</font></a>
   </div>
   <div class="lockscreen-footer text-center">
     Copyright &copy; 2014-2016 <b><a href="http://tarclink.com" class="text-black">Sun Apartments</a></b><br>

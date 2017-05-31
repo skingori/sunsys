@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -17,36 +16,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-
-
-
-    <!--
-    BODY TAG OPTIONS:
-    =================
-    Apply one or more of the following classes to get the
-    desired effect
-    |---------------------------------------------------------|
-    | SKINS         | skin-blue                               |
-    |               | skin-black                              |
-    |               | skin-purple                             |
-    |               | skin-yellow                             |
-    |               | skin-red                                |
-    |               | skin-green                              |
-    |---------------------------------------------------------|
-    |LAYOUT OPTIONS | fixed                                   |
-    |               | layout-boxed                            |
-    |               | layout-top-nav                          |
-    |               | sidebar-collapse                        |
-    |               | sidebar-mini                            |
-    |---------------------------------------------------------|
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
     -->
+    <link rel="stylesheet" href="../dist/css/skins/skin-blue.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -109,7 +113,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="adminprof.php" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="uprof.php" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="../logout.php?logout" class="btn btn-default btn-flat">Sign out</a>
@@ -157,75 +161,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class="header">HEADER</li>
-                <!-- Optionally, you can add icons to the links -->
+                      <li class="header">MENU</li>
+                      <!-- Optionally, you can add icons to the links -->
 
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-home"></i> <span>Properties</span>
+                      <li class="treeview">
+                        <a href="#"><i class="fa fa-link"></i> <span>Properties</span>
+                          <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                          </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="ponewapart.php">Add new</a></li>
+                            <li><a href="poproperty.php">My Properties</a></li>
+                        </ul>
+                      </li>
+                    <li class="treeview">
+                      <a href="#"><i class="fa fa-link"></i> <span>Reports</span>
                         <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="newapart.php">Add new</a></li>
-                        <li><a href="viewapart.php">View Properties</a></li>
-                        <li><a href="viewallapart.php">All Properties</a></li>
-                        <li><a href="viewapart.php">Cancel Appication</a></li>
-                        <li><a href="viewapart.php">Pay Application</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-plug"></i> <span>Damages</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="ad_damage.php">New</a></li>
-                        <li><a href="viwdamage.php">View Damages</a></li>
+                                  <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="popaid.php">Paid Apartments</a></li>
+                        <li><a href="pocanceled.php">Canceled Apartments</a></li>
+                        <li><a href="pobooked.php">Applications</a></li>
+                      </ul>
+                    </li>
 
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-gavel"></i> <span>Policies</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="newpolicy.php">Add new</a></li>
-                        <li><a href="viewpolicy.php">View Policies</a></li>
 
-                    </ul>
-                </li>
-                <li class="active"><a href="booking.php"><i class="fa fa-credit-card"></i> <span>Book | Rent</span></a></li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-folder-open"></i> <span>Reports</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="canceled.php">Canceled Lease</a></li>
-                        <li><a href="fullypaid.php">Paid Lease</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-cog"></i> <span>Admin Settings</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="activator.php">Activate User</a></li>
-                        <li><a href="deactivator.php">De-ctivate User</a></li>
-                        <li><a href="deleter.php">Delete User</a></li>
-                        <li><a href="adminprof.php">Admin Profile</a></li>
-                        <li><a href="logs.php">All logs</a></li>
-
-                    </ul>
-                </li>
-            </ul>
+              </ul>
             <!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->
@@ -237,7 +201,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <section class="content-header">
             <h1>
                 <!-- add heaher here-->
-                <small> Properties 2016</small>
+                <small> Properties 2016 &nbsp; <a href ="" onclick="myFunction()"><i class="fa fa fa-print"></i></a> &nbsp;<a href ="mailto:infor.samson@gmail.com" >email</a>
+                  <script>
+                    function myFunction() {
+                      window.print();
+                    }
+                  </script>
+                </small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -247,3 +217,4 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Main content -->
         <section class="content">
+            <div class="register-box-body">

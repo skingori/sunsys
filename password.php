@@ -117,10 +117,11 @@
             ?>
             <p align="center">Reset Successful</p>
             <br />
-            <br />
+            <p style="color: green" align="center">
             ........loading.....
+          </p>
             <p align="center">
-                <meta content="2;login.php" http-equiv="refresh" />
+                <meta content="2;index.php" http-equiv="refresh" />
             </p>
             <?php
         }  else if($row['category']==2){
@@ -134,10 +135,11 @@
             ?>
             <p align="center">Reset Successful</p>
             <br />
-            <br />
+            <p style="color: green" align="center">
             ........loading.....
+          </p>
             <p align="center">
-                <meta content="2;login.php" http-equiv="refresh" />
+                <meta content="2;index.php" http-equiv="refresh" />
             </p>
             <?php
 
@@ -151,11 +153,13 @@
             ?>
             <p align="center">Reset Successful</p>
             <br />
-            <br />
+            <p style="color: green" align="center">
             ........loading.....
+          </p>
             <p align="center">
-                <meta content="2;login.php" http-equiv="refresh" />
+                <meta content="2;index.php" http-equiv="refresh" />
             </p>
+
             <?php
 
 
@@ -171,10 +175,11 @@
 
             <p align="center">Reset Successful</p>
             <br />
-            <br />
+            <p style="color: green" align="center">
             ........loading.....
+          </p>
             <p align="center">
-                <meta content="2;login.php" http-equiv="refresh" />
+                <meta content="2;index.php" http-equiv="refresh" />
             </p>
             <?php
 
@@ -183,10 +188,11 @@
         else {
 
             ?>
-            <p align="center"><font color="Red">Wrong email or username || user deactivated</font></p>
+            <p align="center" style="color: red">Wrong email or username || user deactivated</p>
             <br />
-            <br />
+            <p style="color: green" align="center">
             ........loading.....
+          </p>
             <p align="center">
                 <meta content="2;password.php" http-equiv="refresh" />
             </p>
@@ -206,7 +212,7 @@
         Google+</a>
     </div>-->
 
-    <a href="login.php" class="text-center">I already have a membership</a>
+    <a href="index.php" class="text-center">I already have a membership</a>
   </div>
   <!-- /.form-box -->
 </div>

@@ -1,8 +1,49 @@
+<?php
+// Inialize session
+session_start();
 
+include '../connection/db.php';
+
+$uname=$_SESSION['userid'];
+
+$result1 = mysqli_query($con,"SELECT * FROM users WHERE userid='$uname'");
+
+while($res = mysqli_fetch_array($result1))
+{
+    $sirname= $res['sirname'];
+    $othernames= $res['othernames'];
+    $username= $res['username'];
+    $mobnum= $res['phonenum'];
+
+}
+
+if (isset($_SESSION['userid']) && isset($_SESSION['category'])) {
+    switch($_SESSION['category']) {
+
+        case 4:
+            header('Location:../admin/index.php');//redirect to  page
+            break;
+        case 1:
+            header('Location:../powner/index.php');//redirect to  page
+            break;
+
+
+    }
+}
+elseif(!isset($_SESSION['userid']) && !isset($_SESSION['category'])) {
+    header('Location:../sessions.php');
+} else
+{
+
+    header('Location:index.php');
+}
+//
+?>
 <?php include "xh.php"; ?>
 
 <!-- Your Page Content Here -->
 <?php
+include '../connection/dbconn.php';
 $id=$_REQUEST['apart_name'];
 
 $do=mysql_query("SELECT * FROM apartments , image WHERE image.image_id='$id' AND apartments.apart_name='$id'")or die(mysql_error());
@@ -23,7 +64,7 @@ if($count >0)
     </div >
 
     <div class="form-group has-feedback" >
-        <label > Booked / Rented by: </label ><input type = "Text" placeholder = "Enter name" readonly = "" name = "bookedby" id = "apartloc" value = "<?php echo "".$OtherNames."  ".$SirName.""; ?>" class="form-control" >
+        <label > Booked / Rented by: </label ><input type = "Text" placeholder = "Enter name" readonly = "" name = "bookedby" id = "apartloc" value = "<?php echo "".$othernames."  ".$sirname.""; ?>" class="form-control" >
     </div >
     <div class="form-group has-feedback" >
         <label > Phone Number:</label ><input type = "text" placeholder = "Enter Mobile" readonly = "" name = "bookcontact" id = "ownername" value = "<?php echo $mobnum;?>" class="form-control" >
@@ -32,18 +73,11 @@ if($count >0)
         <label > Owner Contact:</label ><input type = "text" placeholder = "" readonly = "" name = "ownernum" id = "" value ="<?php echo $array['mobile_num'];?>" class="form-control" >
     </div >
     <div class="form-group has-feedback" >
-        <label > Start date:</label ><input type = "date" placeholder = "Start date" onchange="calc()" name = "bookfrom" id = "startdate" value = "" class="form-control" required >
+        <label > Start date:</label ><input type = "date" placeholder = "Start date" onchange="calc()" min="<?php echo date("Y-m-d"); ?>" name = "bookfrom" id = "startdate" value = "" class="form-control" required >
     </div >
-
-    <!--My personal code-->
-
-
-    <!--my personal code-->
-
-
     <div class="form-group has-feedback" >
         <label > End date:</label >
-        <input type = "date" placeholder = "End date" onchange="calc()" name = "bookto" id = "enddate" value = "" class="form-control" required>
+        <input type = "date" placeholder = "End date" onchange="calc()" min="<?php echo date("Y-m-d"); ?>" name = "bookto" id = "enddate" value = "" class="form-control" required>
 
     </div >
 
@@ -183,5 +217,3 @@ VALUES('$apartbooked','$bookedby','$bookfrom','$bookto','$bookstatus','$depositp
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-
-

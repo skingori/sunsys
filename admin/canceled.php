@@ -1,29 +1,42 @@
 <?php
 // Inialize session
 session_start();
-// Check, if user is already login, then jump to secured page
-if (isset($_SESSION['userid']) && isset($_SESSION['category'])) {
-      switch($_SESSION['category']) {
-      	
-                case 1:
-      		header('location:../index.php');//redirect to  page
-      		break;
-          
-                case 2:
-      		header('location:../index.php');//redirect to  page
-      		break;
-		
-		case 3:
-		  header('location:../index.php');//redirect to  page
-        break;
-		
-      }
-	  }else
-	  {
 
-header('Location:index.php');
+include '../connection/db.php';
+
+$uname=$_SESSION['userid'];
+
+$result1 = mysqli_query($con,"SELECT * FROM users WHERE userid='$uname'");
+
+while($res = mysqli_fetch_array($result1))
+{
+    $sirname= $res['sirname'];
+    $othernames= $res['othernames'];
+    $username= $res['username'];
+
 }
 
+if (isset($_SESSION['userid']) && isset($_SESSION['category'])) {
+    switch($_SESSION['category']) {
+
+        case 2:
+            header('Location:../user/index.php');//redirect to  page
+            break;
+        case 1:
+            header('Location:../powner/index.php');//redirect to  page
+            break;
+
+
+    }
+}
+elseif(!isset($_SESSION['userid']) && !isset($_SESSION['category'])) {
+    header('Location:../sessions.php');
+} else
+{
+
+    header('Location:index.php');
+}
+//
 ?>
 
 <?php include 'xh.php'?>

@@ -1,39 +1,79 @@
+<?php
+// Inialize session
+session_start();
+
+include '../connection/db.php';
+
+$uname=$_SESSION['userid'];
+
+$result1 = mysqli_query($con,"SELECT * FROM users WHERE userid='$uname'");
+
+while($res = mysqli_fetch_array($result1))
+{
+    $sirname= $res['sirname'];
+    $othernames= $res['othernames'];
+    $username= $res['username'];
+
+}
+
+if (isset($_SESSION['userid']) && isset($_SESSION['category'])) {
+    switch($_SESSION['category']) {
+
+        case 4:
+            header('Location:../admin/index.php');//redirect to  page
+            break;
+        case 1:
+            header('Location:../powner/index.php');//redirect to  page
+            break;
+
+
+    }
+}
+elseif(!isset($_SESSION['userid']) && !isset($_SESSION['category'])) {
+    header('Location:../sessions.php');
+} else
+{
+
+    header('Location:index.php');
+}
+//
+?>
 <?php include 'xh.php';?>
       <!-- Your Page Content Here ..................................................................-->
-        
+
        <?php
        	 include("../connection/dbconn.php");
 
-	     $cc=$_REQUEST['id']; 
-             
+	     $cc=$_REQUEST['id'];
+
 	 	 $query="SELECT * FROM booking WHERE id='".$cc."'";
-		
+
 		 $resource=mysql_query($query,$conn) or die ("An unexpected error occured while <b>Activating</b> the record, Please try again!");
 		 $result=mysql_fetch_array($resource);
        ///array for getting data in a row
          $array=mysql_fetch_array($query);
          $count=mysql_num_rows($query);
        if($count >0)
-	 ?> 
-       
+	 ?>
+
         <form id="" name="cancel" method="POST" action="">
-            
+
             <div class="form-group has-feedback">
-                 
+
                 <label> Booking ID: </label><input type="text" readonly="" name="bid" placeholder="" class="form-control" value="<?php echo $result[10] ?>" />
             </div>
             <div class="form-group has-feedback">
-                 
+
                 <label> Apartment booked: </label><input type="text" readonly="" name="ab" action="?action=search" placeholder="" class="form-control" value="<?php echo $result[0] ?>" />
             </div>
-            
+
              <div class="form-group has-feedback">
                  <label> Booked/Rented by : </label><input type="text" name="" readonly="" class="form-control" value="<?php echo $result[1] ?>" />
             </div>
-            
+
             <div class="form-group has-feedback">
                 <label> Deposit Paid : </label><input type="text" name="deposit" readonly="" class="form-control" value="<?php echo $result[5] ?>" />
-            
+
             </div>
 
               <?php
@@ -44,36 +84,36 @@
               <label> Charges to apply : </label><input type="text" name="charges" readonly="" class="form-control" value="<?php echo $xx?>" />
 
             </div>
-            
+
             <!--<div class="form-group has-feedback">
-                
-                 
-             <label> Charges to apply : </label><input type="text" name=""  class="form-control" value="" /> 
-                
-                
+
+
+             <label> Charges to apply : </label><input type="text" name=""  class="form-control" value="" />
+
+
            <div class="col-xs-4">
                 <button type="submit" value="" name="cancel" class="btn btn-primary btn-block btn-flat"><b>Confirm?</b></button>
-                
+
             </div>
             </div>-->
-            
+
              <div class="form-inline">
                 <button type="submit" value="" name="cancel" class="btn btn-primary btn-flat alert-danger"><b>Confirm?</b></button>&nbsp;
                  <button type="reset" value="" name="cancel" onclick="location.href='index.php'" class="btn btn-primary btn-flat alert-warning"><b>Cancel</b></button>
-                
+
             </div>
-            
-        </form> 
+
+        </form>
 
             <?php
-            
-        
-                if (isset($_POST['cancel'])){ 
+
+
+                if (isset($_POST['cancel'])){
 
                 $charges=$_POST['charges'];
 
                       $query="UPDATE booking SET charges_paid='$charges', book_status='canceled' ,cdate=NOW() WHERE id='$cc'";
-                      
+
                                if(!mysql_query($query,$conn))
                                {die ("An unexpected error occured while Cancelling Please try again!");}
                     //logs
@@ -92,7 +132,7 @@
 	}
 	?>
 
-      
-<!-- ...........................................................................-->      
+
+<!-- ...........................................................................-->
 
 <?php include 'xf.php'?>
