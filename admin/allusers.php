@@ -78,6 +78,7 @@ elseif(!isset($_SESSION['userid']) && !isset($_SESSION['category'])) {
           {"data": "emailad"},
           {"data": "phonenum"},
           {"data": "status"}
+
         ],
         "processing": true,
         "serverSide": true,

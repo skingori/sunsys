@@ -59,11 +59,11 @@ elseif(!isset($_SESSION['userid']) && !isset($_SESSION['category'])) {
           <tfoot>
           <tr>
             <th>ID</th>
-            <th>Sir Name</th>
-            <th>Other Names</th>
-            <th>Email</th>
-            <th>Mobile Number</th>
-            <th>Status</th>
+            <th>NAME</th>
+            <th>LOCATION</th>
+            <th>MOBILE NUMBER</th>
+            <th>STATUS</th>
+            <th>RENT</th>
           </tr>
           </tfoot>
         </table>
@@ -77,7 +77,9 @@ elseif(!isset($_SESSION['userid']) && !isset($_SESSION['category'])) {
                 {"data": "apart_loc"},
                 {"data": "mobile_num"},
                 {"data": "apart_status"},
-                {"data": "apart_price"}
+                {"data": "apart_price"},
+
+
               ],
               "processing": true,
               "serverSide": true,

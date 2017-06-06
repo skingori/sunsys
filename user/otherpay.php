@@ -46,7 +46,7 @@ elseif(!isset($_SESSION['userid']) && !isset($_SESSION['category'])) {
         $id=$_REQUEST['mobile_num'];
 
 
-        $do=mysql_query("SELECT * from users where phonenum='$id' ")or die(mysql_error());
+        $do=mysql_query("SELECT * FROM users WHERE phonenum='$id' ")or die(mysql_error());
         $array=mysql_fetch_array($do);
         $count=mysql_num_rows($do);
         if($count >0)
@@ -76,13 +76,12 @@ elseif(!isset($_SESSION['userid']) && !isset($_SESSION['category'])) {
             </tr>
             <tr>
               <td height="">BANK NAME: </td>
-              <td><?php echo $array['bank_name'];?></td>
+              <td><?php echo $array['11'];?></td>
             </tr>
             <tr>
               <td height="">ACCOUNT NUMBER: </td>
-              <td><?php echo $array['bank_account'];?> </td>
+              <td><?php echo $array['12'];?> </td>
             </tr>
-
 
             <tr>
               <td colspan="3">&nbsp;</td>
@@ -95,8 +94,6 @@ elseif(!isset($_SESSION['userid']) && !isset($_SESSION['category'])) {
           <?php
         }
         ?>
-
-
 
         <!-- ...........................................................................-->
 <?php include 'xf.php'?>
